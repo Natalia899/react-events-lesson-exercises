@@ -12,17 +12,20 @@ class Exercise1 extends Component {
     }
   }
   shiftImageBack = () => {
-    // this should reduce currentImg by 1
+    let tempImg = this.state.currentImg - 1
+    this.setState({currentImg: tempImg})
   }
   shiftImageForward = () => {
-    // shiftImageForward - this should increase currentImg by 1
+    let tempImg = this.state.currentImg + 1
+    this.setState({currentImg: tempImg})
   }
 
   render() {
     return (
       <div >
-        {/* render two buttons with the classes "back" and "forward",
-           and the image at index currentImg, in an img tag */}
+        <img key={Math.random()} src={this.state.images[this.state.currentImg]}></img>
+        <button key={Math.random()} className='Back' onClick={this.shiftImageBack}>Back</button>
+        <button key={Math.random()} className='Forward' onClick={this.shiftImageForward}>Forward</button>
       </div>
     );
   }

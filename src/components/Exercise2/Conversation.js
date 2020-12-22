@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
 
 class Conversation extends Component {
-  //should recieve the prop "convo"
+  displayConv = () => {
+    this.props.displayConvo(null)
+  }
   render() {
+    console.log(this.props)
+
     return (
       <div >
-        {/* should render an array of messages, 
-        with each message in a separate div */}
-
-        {/* You should wrap the sender in span with the class "sender" */}
-        {/* When the sender is other you should display 
-                  the name of the sender in the span*/}
-        {/* When the sender is self, you should display "Me" in the span */}
-
-        {/* You should render a back button with the class "back" 
-            When clicked it should set the state of displayConversation to null*/}
+        {this.props.convo.map(con => {
+          console.log(con)
+          return (
+            <div>
+              <span className='sender'>sender: {con.sender === 'self' ? 'me' : this.props.sender}</span>
+              <div className='massage'>{con.text} </div>
+            </div>
+          )
+        })}
+        <button onClick={this.displayConv} className='back'>Back</button>
       </div>
     );
   }
